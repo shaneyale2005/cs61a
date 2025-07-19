@@ -1,4 +1,4 @@
-# [CS61A Spring 2025](https://cs61a.org/)
+# [cs61a](https://cs61a.org/)
 
 
 
