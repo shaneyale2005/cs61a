@@ -1,6 +1,25 @@
 # [UCB CS61A: Structure and Interpretation of Computer Programs](https://cs61a.org/)
 
-CS61A是加州大学伯克利分校UC Berkeley计算机科学系开设的一门入门级编程与计算机科学课程，全称为Structure and Interpretation of Computer Programs程序设计与解释。本课程以Python为主要教学语言，重点培养学生对计算思维、程序结构和抽象方法的深入理解。课程内容涵盖函数式编程、递归、面向对象编程、数据抽象、序列处理、迭代与递归过程、树遍历、解释器构建等核心概念，旨在帮助学生掌握如何设计、分析和优化程序。
+Welcome to my repository for **UC Berkeley's CS61A: Structure and Interpretation of Computer Programs**!
+
+This repository serves as a personal collection of my work, notes, and solutions for the CS61A course. CS61A is an introductory programming and computer science course at UC Berkeley, focusing on fundamental concepts of computational thinking, program structure, and abstraction.
+
+## Course Overview
+
+The course primarily uses **Python** as its teaching language. Key topics covered include:
+
+* **Functional Programming**: Understanding functions as first-class citizens and their role in program design
+* **Recursion**: Mastering recursive thinking for elegant problem-solving
+* **Object-Oriented Programming**: Exploring classes, objects, and inheritance for structuring complex programs
+* **Data Abstraction**: Learning to design and use abstract data types
+* **Sequence Processing**: Techniques for manipulating lists, tuples, and other sequential data
+* **Iteration and Recursion**: Comparing and contrasting iterative and recursive approaches
+* **Tree Traversal**: Algorithms for navigating tree data structures
+* **Interpreter Design**: Gaining insight into how programming languages are interpreted
+
+The aim of CS61A is to equip students with the skills to design, analyze, and optimize programs effectively.
+
+Feel free to explore! If you have any suggestions or notice any issues, please contact me via email.
 
 
 
