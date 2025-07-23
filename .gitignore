@@ -16,6 +16,7 @@ __pycache__/
 .ok_history
 .ok_messages
 .ok_storage.db
+.ok_storage
 
 # vscode相关配置文件
 .vscode/
