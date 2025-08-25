@@ -1,6 +1,6 @@
-# [UCB CS61A: Structure and Interpretation of Computer Programs](https://cs61a.org/)
+# 🐍 [UCB CS61A: Structure and Interpretation of Computer Programs](https://cs61a.org/)
 
-## Course Overview
+### 📚 Course Overview
 
 Welcome to my repository for **UC Berkeley's CS61A: Structure and Interpretation of Computer Programs**!
 
@@ -20,7 +20,3 @@ The course primarily uses **Python** as its teaching language. Key topics covere
 The aim of CS61A is to equip students with the skills to design, analyze, and optimize programs effectively.
 
 Feel free to explore! If you have any suggestions or notice any issues, please contact me via email.
-
-
-
-
