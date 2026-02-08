@@ -359,6 +359,19 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
+    turn_points = boar_brawl(score, opponent_score)
+    final_score = sus_points(score + turn_points)
+    if final_score >= GOAL:
+        return 0
+    base = sus_strategy(score, opponent_score, threshold=11, num_rolls=6)
+    if base == 0:
+        return 0
+
+    diff = score = opponent_score
+    if diff >= 15:
+        return 4
+    if diff <= -15:
+        return 7
     return 6  # Remove this line once implemented.
     # END PROBLEM 12
 
