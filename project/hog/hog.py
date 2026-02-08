@@ -341,7 +341,15 @@ def sus_strategy(score, opponent_score, threshold=11, num_rolls=6):
     THRESHOLD points, and returns NUM_ROLLS otherwise. Consider both the Boar Brawl and
     Suss Fuss rules."""
     # BEGIN PROBLEM 11
-    return num_rolls  # Remove this line once implemented.
+    turn_points = boar_brawl(score, opponent_score)
+    new_score = score + turn_points
+    final_score = sus_points(new_score)
+    increase = final_score - score
+    
+    if increase >= threshold:
+        return 0
+
+    return num_rolls  # Remove this line once implemented.()
     # END PROBLEM 11
 
 
