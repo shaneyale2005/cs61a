@@ -276,7 +276,7 @@ def max_scoring_num_rolls(dice=six_sided, times_called=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
-    averaged_roll = make_averaged(roll_dice, times_called=1000)
+    averaged_roll = make_averaged(roll_dice, times_called)
     best_num = 1
     best_avg = averaged_roll(1, dice)
     for num in range(2, 11):
@@ -367,7 +367,7 @@ def final_strategy(score, opponent_score):
     if base == 0:
         return 0
 
-    diff = score = opponent_score
+    diff = score - opponent_score
     if diff >= 15:
         return 4
     if diff <= -15:
