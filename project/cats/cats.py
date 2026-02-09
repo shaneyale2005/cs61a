@@ -442,6 +442,19 @@ def fastest_words(words_and_times):
     word_indices = range(len(words))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    result =  [[] for _ in player_indices]
+
+    for word_idx in word_indices:
+        fastest_player = 0
+        fastest_time = times[0][word_idx]
+
+        for player_idx in player_indices:
+            current_time = times[player_idx][word_idx]
+            if current_time < fastest_time:
+                fastest_time = current_time
+                fastest_player = player_idx
+        result[fastest_player].append(words[word_idx])
+    return result
     # END PROBLEM 10
 
 
