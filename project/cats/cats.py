@@ -11,14 +11,14 @@ from utils import (
 from ucb import main, interact, trace
 from datetime import datetime
 import random
-from typing import Callable
+from typing import Callable, List
 
 ###########
 # Phase 1 #
 ###########
 
 
-def pick(paragraphs: list[str], select: Callable[[str], bool], k: int) -> str:
+def pick(paragraphs: List[str], select: Callable[[str], bool], k: int) -> str:
     """Return the Kth paragraph from PARAGRAPHS for which the SELECT function returns True.
     If there are fewer than K such paragraphs, return an empty string.
 
