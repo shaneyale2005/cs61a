@@ -234,7 +234,7 @@ def autocorrect(typed_word: str, word_list: List[str], diff_function: Callable[[
     # END PROBLEM 5
 
 
-def furry_fixes(typed, source, limit):
+def furry_fixes(typed: str, source: str, limit: int) -> int:
     """A diff function for autocorrect that determines how many letters
     in TYPED need to be substituted to create SOURCE, then adds the difference in
     their lengths to this value and returns the result.
@@ -257,7 +257,21 @@ def furry_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, 'Remove this line'
+    def helper(typed_idx: int, source_idx: int, diff_sofar: int) -> int:
+        if diff_sofar > limit:
+            return limit + 1
+        if typed_idx == len(typed):
+            remaining = len(source) - source_idx
+            return diff_sofar + remaining
+        if source_idx == len(source):
+            remaining = len(typed) - typed_idx
+            return diff_sofar + remaining
+        if typed[typed_idx] != source[source_idx]:
+            return helper(typed_idx + 1, source_idx + 1, diff_sofar + 1)
+        else:
+            return helper(typed_idx + 1, source_idx + 1, diff_sofar)
+        
+    return helper(0, 0, 0)
     # END PROBLEM 6
 
 def minimum_mewtations(typed, source, limit):
