@@ -337,7 +337,7 @@ FINAL_DIFF_LIMIT = 6  # REPLACE THIS WITH YOUR LIMIT
 ###########
 
 
-def report_progress(typed, source, user_id, upload):
+def report_progress(typed: List[str], source: List[str], user_id: int, upload: Callable[[Dict[str, Union[int, float]]], None]) -> float:
     """Upload a report of your id and progress so far to the multiplayer server.
     Returns the progress so far.
 
@@ -362,6 +362,19 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    correct_count: int = 0
+    for i in range(len(typed)):
+        if typed[i] == source[i]:
+            correct_count += 1
+        else:
+            break
+    progress: float = correct_count / len(source)
+    message: Dict[str, Union[int, float]] = {
+        'id': user_id,
+        'progress': progress
+    }
+    upload(message)
+    return progress
     # END PROBLEM 8
 
 
