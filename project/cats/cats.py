@@ -11,7 +11,7 @@ from utils import (
 from ucb import main, interact, trace
 from datetime import datetime
 import random
-from typing import Callable, List
+from typing import Callable, List, Union
 
 ###########
 # Phase 1 #
@@ -127,7 +127,7 @@ def accuracy(typed: str, source: str) -> float:
     # END PROBLEM 3
 
 
-def wpm(typed, elapsed):
+def wpm(typed: str, elapsed: Union[int, float]) -> float:
     """Return the words-per-minute (WPM) of the TYPED string.
 
     Arguments:
@@ -142,6 +142,11 @@ def wpm(typed, elapsed):
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    num_chars: int = len(typed)
+    num_words: float = num_chars / 5.0
+    minutes: float = elapsed / 60.0
+    wpm_speed: float = num_words / minutes
+    return wpm_speed
     # END PROBLEM 4
 
 
