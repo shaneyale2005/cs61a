@@ -11,7 +11,7 @@ from utils import (
 from ucb import main, interact, trace
 from datetime import datetime
 import random
-from typing import Callable, List, Union, Tuple, Dict
+from typing import Callable, List, Union, Tuple, Dict, Any
 
 ###########
 # Phase 1 #
@@ -378,7 +378,7 @@ def report_progress(typed: List[str], source: List[str], user_id: int, upload: C
     # END PROBLEM 8
 
 
-def time_per_word(words, timestamps_per_player):
+def time_per_word(words: List[str], timestamps_per_player: List[List[int]]) -> Dict[str, Any]:
     """Return a dictionary {'words': words, 'times': times} where times
     is a list of lists that stores the durations it took each player to type
     each word in words.
@@ -398,9 +398,24 @@ def time_per_word(words, timestamps_per_player):
     """
     tpp = timestamps_per_player  # A shorter name (for convenience)
     # BEGIN PROBLEM 9
-    times = []  # You may remove this line
+    num_words: int = len(words)
+    for i, player_times in enumerate(tpp):
+        if len(player_times) != num_words + 1:
+            raise ValueError
+    
+    all_player_times: List[List[int]] = []
+    for player_timestamps in tpp:
+        player_time_diffs: List[int] = []
+
+        for i in range(len(player_timestamps) - 1):
+            start_time = player_timestamps[i]
+            end_time = player_timestamps[i + 1]
+            duration = end_time - start_time
+            player_time_diffs.append(duration)
+
+        all_player_times.append(player_time_diffs)
     # END PROBLEM 9
-    return {'words': words, 'times': times}
+    return {'words': words, 'times': all_player_times}
 
 
 def fastest_words(words_and_times):
