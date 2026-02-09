@@ -195,7 +195,7 @@ def memo_diff(diff_function: Callable[[str, str, int], int]) -> Callable[[str, s
 ###########
 
 
-def autocorrect(typed_word, word_list, diff_function, limit):
+def autocorrect(typed_word: str, word_list: List[str], diff_function: Callable[[str, str, int], int], limit: int) -> str:
     """Returns the element of WORD_LIST that has the smallest difference
     from TYPED_WORD based on DIFF_FUNCTION. If multiple words are tied for the smallest difference,
     return the one that appears closest to the front of WORD_LIST. If the
@@ -216,6 +216,21 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if typed_word in word_list:
+        return typed_word
+    
+    best_word: str = typed_word
+    min_diff: int = limit + 1
+    for word in word_list:
+        current_diff: int = diff_function(typed_word, word, limit)
+        if current_diff < min_diff:
+            min_diff = current_diff
+            best_word = word
+
+    if min_diff > limit:
+        return typed_word
+    else:
+        return best_word
     # END PROBLEM 5
 
 
