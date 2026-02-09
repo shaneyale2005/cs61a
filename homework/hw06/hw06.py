@@ -61,10 +61,8 @@ class VendingMachine:
         E.g., Current candy stock: 3
         """
         "*** YOUR CODE HERE ***"
-        if self.stock == 0:
-            return f"Nothing left to vend. Please restock. Here is your ${n}."
-        self.balance += n
-        return f"Current balance: ${self.balance}"
+        self.stock += n
+        return f'Current {self.product} stock: {self.stock}'
         
 
     def add_funds(self, n):
@@ -78,6 +76,10 @@ class VendingMachine:
         E.g., Current balance: $4
         """
         "*** YOUR CODE HERE ***"
+        if self.stock == 0:
+            return f"Nothing left to vend. Please restock. Here is your ${n}."
+        self.balance += n
+        return f"Current balance: ${self.balance}"
 
     def vend(self):
         """Dispense the product if there is sufficient stock and funds and
@@ -91,6 +93,22 @@ class VendingMachine:
               Please add $3 more funds.
         """
         "*** YOUR CODE HERE ***"
+        if self.stock == 0:
+            return 'Nothing left to vend. Please restock.'
+        
+        if self.balance < self.price:
+            needed = self.price - self.balance
+            return f'Please add ${needed} more funds.'
+        
+        # Successful vend
+        self.stock -= 1
+        change = self.balance - self.price
+        self.balance = 0  # Reset balance after vend
+        
+        if change > 0:
+            return f'Here is your {self.product} and ${change} change.'
+        else:
+            return f'Here is your {self.product}.'
 
 
 def store_digits(n):
