@@ -11,7 +11,7 @@ from utils import (
 from ucb import main, interact, trace
 from datetime import datetime
 import random
-from typing import Callable, List, Union
+from typing import Callable, List, Union, Tuple, Dict
 
 ###########
 # Phase 1 #
@@ -170,13 +170,21 @@ def memo(f):
     return memoized
 
 
-def memo_diff(diff_function):
+def memo_diff(diff_function: Callable[[str, str, int], int]) -> Callable[[str, str, int], int]:
     """A memoization function."""
     cache = {}
 
     def memoized(typed, source, limit):
         # BEGIN PROBLEM EC
         "*** YOUR CODE HERE ***"
+        key: Tuple[str, str] = (typed, source)
+        if key in cache:
+            cache_value, cache_limit = cache[key]
+            if limit <= cache_limit:
+                return cache_value
+        new_value: int = diff_function(typed, source, limit)
+        cache[key] = (new_value, limit)
+        return new_value
         # END PROBLEM EC
 
     return memoized
@@ -237,45 +245,60 @@ def furry_fixes(typed, source, limit):
     assert False, 'Remove this line'
     # END PROBLEM 6
 
-
 def minimum_mewtations(typed, source, limit):
-    """A diff function for autocorrect that computes the edit distance from TYPED to SOURCE.
-    This function takes in a string TYPED, a string SOURCE, and a number LIMIT.
-
-    Arguments:
-        typed: a starting word
-        source: a string representing a desired goal word
-        limit: a number representing an upper bound on the number of edits
-
-    >>> big_limit = 10
-    >>> minimum_mewtations("cats", "scat", big_limit)       # cats -> scats -> scat
-    2
-    >>> minimum_mewtations("purng", "purring", big_limit)   # purng -> purrng -> purring
-    2
-    >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
-    3
-    """
-    assert False, 'Remove this line'
-    if ___________: # Base cases should go here, you may add more base cases as needed.
+    # 保存原始限制
+    original_limit = limit
+    
+    if limit < 0:  # 基本情况的第一个条件：如果limit<0
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        return original_limit + 1
         # END
-    # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
+    
+    # 其他基本情况
+    if typed == source:  # 如果两个字符串相等
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        return 0
+        # END
+    
+    if not typed:  # 如果typed为空
+        # BEGIN
+        if len(source) > limit:
+            return original_limit + 1
+        return len(source)
+        # END
+    
+    if not source:  # 如果source为空
+        # BEGIN
+        if len(typed) > limit:
+            return original_limit + 1
+        return len(typed)
+        # END
+    
+    # 递归情况
+    if typed[0] == source[0]:  # 如果第一个字符相同
+        # BEGIN
+        return minimum_mewtations(typed[1:], source[1:], limit)
         # END
     else:
-        add = ... # Fill in these lines
-        remove = ...
-        substitute = ...
+        # 三种编辑操作
+        add = minimum_mewtations(typed, source[1:], limit - 1)      # 插入
+        remove = minimum_mewtations(typed[1:], source, limit - 1)   # 删除
+        substitute = minimum_mewtations(typed[1:], source[1:], limit - 1)  # 替换
+        
         # BEGIN
-        "*** YOUR CODE HERE ***"
+        # 计算最小编辑距离
+        result = 1 + min(add, remove, substitute)
+        
+        # 如果结果超过原始限制，返回original_limit + 1
+        if result > original_limit:
+            return original_limit + 1
+        return result
         # END
 
 
 # Ignore the line below
 minimum_mewtations = count(minimum_mewtations)
+minimum_mewtations = memo_diff(minimum_mewtations)
 
 
 def final_diff(typed, source, limit):
