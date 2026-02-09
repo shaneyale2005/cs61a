@@ -48,7 +48,7 @@ def pick(paragraphs: List[str], select: Callable[[str], bool], k: int) -> str:
     # END PROBLEM 1
 
 
-def about(keywords):
+def about(keywords: List[str]) -> Callable[[str], bool]:
     """Return a function that takes in a paragraph and returns whether
     that paragraph contains one of the words in keywords.
 
@@ -65,6 +65,23 @@ def about(keywords):
 
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def paragraph_contains_keyword(paragraph: str) -> bool:
+        paragraph_lower: str = lower(paragraph)
+        words: List[str] = paragraph_lower.split()
+
+        clean_words: List[str] = []
+        for word in words:
+            clean_word: str = ""
+            for char in word:
+                if char.isalpha():
+                    clean_word += char
+            if clean_word:
+                clean_words.append(clean_word)
+        for word in clean_words:
+            if word in keywords:
+                return True
+        return False
+    return paragraph_contains_keyword
     # END PROBLEM 2
 
 
