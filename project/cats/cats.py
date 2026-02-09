@@ -275,50 +275,43 @@ def furry_fixes(typed: str, source: str, limit: int) -> int:
     # END PROBLEM 6
 
 def minimum_mewtations(typed, source, limit):
-    # 保存原始限制
     original_limit = limit
     
-    if limit < 0:  # 基本情况的第一个条件：如果limit<0
+    if limit < 0:
         # BEGIN
         return original_limit + 1
         # END
     
-    # 其他基本情况
-    if typed == source:  # 如果两个字符串相等
+    if typed == source:
         # BEGIN
         return 0
         # END
     
-    if not typed:  # 如果typed为空
+    if not typed:
         # BEGIN
         if len(source) > limit:
             return original_limit + 1
         return len(source)
         # END
     
-    if not source:  # 如果source为空
+    if not source:
         # BEGIN
         if len(typed) > limit:
             return original_limit + 1
         return len(typed)
         # END
     
-    # 递归情况
-    if typed[0] == source[0]:  # 如果第一个字符相同
+    if typed[0] == source[0]:
         # BEGIN
         return minimum_mewtations(typed[1:], source[1:], limit)
         # END
     else:
-        # 三种编辑操作
-        add = minimum_mewtations(typed, source[1:], limit - 1)      # 插入
-        remove = minimum_mewtations(typed[1:], source, limit - 1)   # 删除
-        substitute = minimum_mewtations(typed[1:], source[1:], limit - 1)  # 替换
+        add = minimum_mewtations(typed, source[1:], limit - 1)
+        remove = minimum_mewtations(typed[1:], source, limit - 1)
+        substitute = minimum_mewtations(typed[1:], source[1:], limit - 1)
         
         # BEGIN
-        # 计算最小编辑距离
         result = 1 + min(add, remove, substitute)
-        
-        # 如果结果超过原始限制，返回original_limit + 1
         if result > original_limit:
             return original_limit + 1
         return result
@@ -326,8 +319,8 @@ def minimum_mewtations(typed, source, limit):
 
 
 # Ignore the line below
-minimum_mewtations = count(minimum_mewtations)
-minimum_mewtations = memo_diff(minimum_mewtations)
+minimum_mewtations = count(minimum_mewtations)  # type: ignore
+minimum_mewtations = memo_diff(minimum_mewtations)  # type: ignore
 
 
 def final_diff(typed, source, limit):
