@@ -85,7 +85,7 @@ def about(keywords: List[str]) -> Callable[[str], bool]:
     # END PROBLEM 2
 
 
-def accuracy(typed, source):
+def accuracy(typed: str, source: str) -> float:
     """Return the accuracy (percentage of words typed correctly) of TYPED
     compared to the corresponding words in SOURCE.
 
@@ -112,6 +112,18 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if typed == "" and source == "":
+        return 100.0
+    if typed == "" or source == "":
+        return 0.0
+    
+    correct: int = 0
+
+    for i in range(min(len(typed_words), len(source_words))):
+        if typed_words[i] == source_words[i]:
+            correct += 1
+        
+    return (correct / len(typed_words)) * 100.0
     # END PROBLEM 3
 
 
