@@ -186,6 +186,16 @@ def two_list(vals, counts):
     Link(1, Link(1, Link(3, Link(3, Link(2)))))
     """
     "*** YOUR CODE HERE ***"
+    result = Link.empty
+    for i in range(len(vals) - 1, -1, -1):
+        val = vals[i]
+        count = counts[i]
+
+        for _ in range(count):
+            result = Link(val, result)
+
+    return result
+
 
 
 class Link:
