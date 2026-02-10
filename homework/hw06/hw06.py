@@ -112,7 +112,7 @@ class VendingMachine:
 
 
 def store_digits(n):
-    """Stores the digits of a positive number n in a linked list.
+    r"""Stores the digits of a positive number n in a linked list.
 
     >>> s = store_digits(1)
     >>> s
