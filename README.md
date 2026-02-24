@@ -2,18 +2,6 @@
 
 ### Course Overview
 
-This repository serves as a personal collection of my work, notes, and solutions for the CS61A course. CS61A is an introductory programming and computer science course at UC Berkeley, focusing on fundamental concepts of computational thinking, program structure, and abstraction.
+This repository serves as a personal collection of my work for the CS61A course. CS61A is an introductory programming and computer science course at UC Berkeley, focusing on fundamental concepts of computational thinking, program structure, and abstraction. The course primarily uses Python as its teaching language.
 
-The course primarily uses **Python** as its teaching language. Key topics covered include:
-
-* **Functional Programming**: Understanding functions as first-class citizens and their role in program design
-* **Recursion**: Mastering recursive thinking for elegant problem-solving
-* **Object-Oriented Programming**: Exploring classes, objects, and inheritance for structuring complex programs
-* **Data Abstraction**: Learning to design and use abstract data types
-* **Sequence Processing**: Techniques for manipulating lists, tuples, and other sequential data
-* **Iteration and Recursion**: Comparing and contrasting iterative and recursive approaches
-* **Tree Traversal**: Algorithms for navigating tree data structures
-* **Interpreter Design**: Gaining insight into how programming languages are interpreted
-
-The aim of CS61A is to equip students with the skills to design, analyze, and optimize programs effectively.
-
+The course covers a wide range of topics, including functional programming, recursion, object-oriented programming, and data abstraction. Students learn to design and use abstract data types, manipulate sequential data, and compare iterative and recursive approaches to problem-solving.
